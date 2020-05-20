@@ -6,13 +6,12 @@
 # License: GNU General Public License v3.0
 #
 
-FROM ubuntu:bionic
+FROM ubuntu:latest
 MAINTAINER John-Michael TO <johnmichael78@gmail.com>
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV LANG C.UTF-8
 
-RUN ln -snf /usr/share/zoneinfo/Etc/UTC /etc/localtime \
-    && echo "Etc/UTC" > /etc/timezone \
-    && apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -f -y texlive-full
+RUN DEBIAN_FRONTEND=noninteractive \
+    TZ=Asia/Shanghai \
+    apt-get update &&\
+    apt-get install -f -y --no-install-recommends texlive-full
