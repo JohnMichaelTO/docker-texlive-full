@@ -10,8 +10,7 @@ FROM ubuntu:latest
 MAINTAINER John-Michael TO <johnmichael78@gmail.com>
 
 ENV LANG C.UTF-8
+ENV DEBIAN_FRONTEND noninteractive
 
-RUN DEBIAN_FRONTEND=noninteractive \
-    TZ=Asia/Shanghai \
-    apt-get update &&\
+RUN apt-get update &&\
     apt-get install -f -y --no-install-recommends texlive-full
